@@ -6,8 +6,9 @@ app.use(express.logger());
 app.get('/', function(request, response) {
 //  response.send('Hello awesome World!  Dude this is totally awesmoe!!! My first web server!!!!');
 
-    var data = fs.readFileSync("index.html", "utf8");
-    response.send (data);
+    var buffer = fs.readFileSync("index.html");
+    var len = buffer.length;
+    response.send (buffer.toString('utf8',0, len));
 
 });
 
